@@ -6,9 +6,9 @@
        xmlns:jee="http://www.springframework.org/schema/jee"
        xsi:schemaLocation="
     http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-4.3.xsd
+    http://www.springframework.org/schema/context/spring-context.xsd
     http://camel.apache.org/schema/spring
     http://camel.apache.org/schema/spring/camel-spring.xsd
     http://www.springframework.org/schema/jee
@@ -16,7 +16,7 @@
 ">
 
 
-    <context:component-scan base-package="org.wildfly.camel.examples.jms" />
+    <context:component-scan base-package="org.wildfly.camel.examples.jpa" />
 
 
     <spring:camelContext id="camel-klok">

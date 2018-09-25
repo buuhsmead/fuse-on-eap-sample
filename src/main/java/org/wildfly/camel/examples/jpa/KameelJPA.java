@@ -1,17 +1,9 @@
-package org.wildfly.camel.examples.jms;
+package org.wildfly.camel.examples.jpa;
 
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
-import org.apache.camel.component.jpa.JpaEndpoint;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.jta.JtaTransactionManager;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
-import javax.transaction.UserTransaction;
 
 
 @ContextName("camel-klok")
@@ -30,7 +22,7 @@ public class KameelJPA extends RouteBuilder {
                 .log("Inserted new Persoon ${body.id}");
 
 
-        from("jpa:org.wildfly.camel.examples.jms.Persoon").routeId("camel-klok-jpa-consumer")
+        from("jpa:org.wildfly.camel.examples.jpa.Persoon").routeId("camel-klok-jpa-consumer")
                 .log("JPA inhoud ${body.id}.");
     }
 }

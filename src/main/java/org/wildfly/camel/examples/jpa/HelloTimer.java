@@ -1,16 +1,9 @@
-package org.wildfly.camel.examples.jms;
+package org.wildfly.camel.examples.jpa;
 
 import org.apache.camel.BeanInject;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
-import javax.ejb.Startup;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 
 @ContextName("camel-klok")
