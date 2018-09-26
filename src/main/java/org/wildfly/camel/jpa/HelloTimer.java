@@ -1,4 +1,4 @@
-package org.wildfly.camel.examples.jpa;
+package org.wildfly.camel.jpa;
 
 import org.apache.camel.BeanInject;
 import org.apache.camel.builder.RouteBuilder;
@@ -15,7 +15,7 @@ public class HelloTimer extends RouteBuilder {
     SpringDing springDing;
 
     @Override
-    public void configure() throws Exception {
+    public void configure() {
 
         from("timer://foo?fixedRate=true&period=10000").routeId("camel-klok-timer")
                 .log("Hallo from Timer " + springDing.getHallo())

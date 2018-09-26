@@ -7,14 +7,21 @@
         http://xmlns.jcp.org/xml/ns/persistence
         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
-<persistence-unit name="camel">
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <persistence-unit name="camel" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-    <class>org.wildfly.camel.examples.jpa.Persoon</class>
+        <class>org.wildfly.jee.jpa.Persoon</class>
+
+        <shared-cache-mode>ALL</shared-cache-mode>
 
     <properties>
         <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
         <property name="hibernate.transaction.jta.platform" value="JBossAS" />
+        <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+        <!--Not used at this moment, just for reference -->
+        <!--<property name="jboss.entity.manager.jndi.name" value="java:/MyEntityManager"/>-->
+        <!--<property name="jboss.entity.manager.factory.jndi.name" value="java:/MyEntityManagerFactory"/>-->
 
     </properties>
 </persistence-unit>

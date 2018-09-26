@@ -16,7 +16,7 @@
 ">
 
 
-    <context:component-scan base-package="org.wildfly.camel.examples.jpa" />
+    <context:component-scan base-package="org.wildfly.camel"/>
 
 
     <spring:camelContext id="camel-klok">

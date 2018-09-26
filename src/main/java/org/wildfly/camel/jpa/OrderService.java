@@ -1,10 +1,14 @@
-package org.wildfly.camel.examples.jpa;
+package org.wildfly.camel.jpa;
 
 
 import org.springframework.stereotype.Component;
+import org.wildfly.jee.jpa.Persoon;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
+
+
+// Springframework Component
 
 @Component
 public class OrderService {

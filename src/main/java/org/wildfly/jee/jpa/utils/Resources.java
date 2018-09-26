@@ -1,0 +1,21 @@
+package org.wildfly.jee.jpa.utils;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Produces;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+@ApplicationScoped
+public class Resources {
+
+
+    @PersistenceContext
+    private EntityManager em;
+
+    @Produces
+    @RequestScoped
+    public EntityManager getEntityManager() {
+        return em;
+    }
+}

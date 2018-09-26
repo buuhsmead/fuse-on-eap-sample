@@ -1,4 +1,4 @@
-package org.wildfly.camel.examples.jpa;
+package org.wildfly.camel.jpa;
 
 
 import org.springframework.stereotype.Component;

@@ -1,5 +1,7 @@
-package org.wildfly.camel.examples.jpa;
+package org.wildfly.camel.jpa;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
 import org.apache.camel.model.rest.RestBindingMode;
@@ -16,11 +18,27 @@ import javax.ws.rs.core.MediaType;
 public class Kameel extends RouteBuilder  {
 
     @Override
-    public void configure() throws Exception {
+    public void configure() {
+
+
+        /**
+         * Configure an error handler to trap instances where the data posted to
+         * the REST API is invalid
+         */
+        // just example : using plain/text in example
+        onException(JsonParseException.class)
+                .handled(true)
+                .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(400))
+                .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.TEXT_PLAIN))
+                .setBody().constant("Invalid json data");
+
+
+
         restConfiguration()
                 .contextPath("/kameel")
                 .component("undertow")
                 .bindingMode(RestBindingMode.off)
+                .enableCORS(true)
                 .apiContextPath("/api-docs")
                 .apiProperty("api.title", "WildFly Swarm Camel REST API")
                 .apiProperty("api.version", "1.2.3")
@@ -40,8 +58,8 @@ public class Kameel extends RouteBuilder  {
                     .to("direct:bye");
 
 
-
-        // endpoint is http://localhost:8080/hello
+        // endpoint takes into account the contextPath of restConfiguration
+        // endpoint is http://localhost:8080/kameel/hello
         from("rest:get:hello").routeId("camel-klok-rest")
                 .transform().constant("Hi from Kameel!");
 

@@ -1,4 +1,4 @@
-package org.wildfly.camel.examples.jpa;
+package org.wildfly.jee.jpa;
 
 
 import javax.persistence.Entity;
